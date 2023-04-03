@@ -56,14 +56,19 @@ export default function LanguageComponent() {
                     </FloatingLabel>
                 </div>
                 <div className='col-3  mt-2'>
-                    <Form.Select aria-label="Default select example" name="level" value={language.level} onChange={(e) => changeLanguage(e, index)}>
-                        <option value="Beginners">Beginners</option>
-                        <option value="Pre-intermediate">Pre-intermediate</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="Upper-intermediate">Upper-intermediate</option>
-                        <option value="Advanced">Advanced</option>
-                        <option value="Proficiency">Proficiency</option>
-                    </Form.Select>
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="level"
+                    >
+                        <Form.Select aria-label="Default select example" name="level" value={language.level} onChange={(e) => changeLanguage(e, index)}>
+                            <option value="Beginners">Beginners</option>
+                            <option value="Pre-intermediate">Pre-intermediate</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Upper-intermediate">Upper-intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                            <option value="Proficiency">Proficiency</option>
+                        </Form.Select>
+                    </FloatingLabel>
                 </div>
                 <div className='col-6 d-flex align-items-center mt-2'>
                     <Button variant="warning" onClick={() => handleRemoveLanguage(index)}>Remove Language</Button>

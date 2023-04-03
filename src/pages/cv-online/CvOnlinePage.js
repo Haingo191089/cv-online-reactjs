@@ -12,6 +12,9 @@ import { setTemplateName } from '../../store/slices/settings';
 import GeneralComponent from './component/general/GeneralComponent';
 import LanguageComponent from './component/language/LanguageComponent';
 import PersonalInfoComponent from './component/personal_infor/PersonalInfoComponent';
+import ContractComponent from './component/contract/ContractComponent';
+import EducationHistoryComponent from './component/education_history/EducationHistoryComponent';
+import EmploymentHistoryComponent from './component/employment_history/EmploymentHistoryComponent';
 
 import { listTemplate } from '../../templates';
 
@@ -47,6 +50,9 @@ export default function CvOnlinePage() {
                         <GeneralComponent/>
                         <LanguageComponent/>
                         <PersonalInfoComponent/>
+                        <ContractComponent/>
+                        <EducationHistoryComponent/>
+                        <EmploymentHistoryComponent/>
                     </Accordion>
                 </div>
             </div>

@@ -23,17 +23,14 @@ export default function FloatingDatePicker(props) {
         return date.getFullYear();
     }
 
-    // const currentYear = getYear(new Date()) + 1
-    
     const getMonth = function (date) {
-        return months[date.getMonth()];
+        return date.getMonth();
     }
     
     const range = function (yearStart, yearEnd, step) {
         const result = [];
         let y = yearStart;
-        for(; y < Number(yearEnd); y = y + Number(step)) {
-            console.log(y)
+        for(; y <= Number(yearEnd); y = y + Number(step)) {
             result.push(y);
         }
         return result;
@@ -45,6 +42,7 @@ export default function FloatingDatePicker(props) {
         <div className="floatingDatePicker">
             <label>{props.label}</label>
             <DatePicker
+                dateFormat="yyyy/MM/dd"
                 renderCustomHeader={({
                     date,
                     changeYear,
@@ -93,8 +91,7 @@ export default function FloatingDatePicker(props) {
                         </button>
                     </div>
                 )}
-                selected={props.selected}
-                onChange={props.onChange}
+                {...props}
             />
         </div>
     );

@@ -1,4 +1,4 @@
-.floatingDatePicker {
+.floatingMonthPicker {
     position: relative;
 
     .react-datepicker__input-container {
@@ -12,10 +12,11 @@
     }
 
     label {
-        color: #ced4da;
+        color: var(--bs-accordion-color);
         padding-left: 0.75rem;
         position: absolute;
-        top: 5px;
-        transform: scale(0.85);
+        top: 15px;
+        z-index: 9999;
+        transition: 0.25s;
     }
 }

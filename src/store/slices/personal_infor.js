@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import * as common from '../../common/js/common';
 
 const initialState = {
-    birthday: new Date(),
+    birthday: common.convertDateToString(new Date()),
     placeOfBirth: '',
     gender:'',
     maritalStatus: ''

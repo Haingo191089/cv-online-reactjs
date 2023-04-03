@@ -16,6 +16,8 @@ import FloatingDatePicker from '../floatingDatePicker/FloatingDatePicker';
 
 import { setPersonalInfor } from '../../../../store/slices/personal_infor';
 
+import * as common from '../../../../common/js/common';
+
 export default function PersonalInfoComponent() {
     const personalInfo = useSelector((state) => {
         return state.personalInfor;
@@ -25,20 +27,15 @@ export default function PersonalInfoComponent() {
 
     const handleBirthdayChange = function (date) {
         dispatch(setPersonalInfor({
-            birthday: date
+            birthday: common.convertDateToString(date)
         }))
     }
 
-    // const changeLanguage = function (e, index) {
-    //     dispatch(setLanguage({
-    //         [e.target.name]: e.target.value,
-    //         index
-    //     }))
-    // }
-
-    // const handleAddLanguage = function () {
-    //     dispatch(addLanguage())
-    // }
+    const changePersonalInfo = function (e, index) {
+        dispatch(setPersonalInfor({
+            [e.target.name]: e.target.value
+        }))
+    }
 
     return (
         <>
@@ -48,12 +45,43 @@ export default function PersonalInfoComponent() {
                 </Accordion.Header>
                 <Accordion.Body>
                     <div className='row mt-2'>
-                        <div className='col-3 mt-2 birthday'>
-                            {/* <label>Birthday</label> */}
-                            {/* <DatePicker monthsShown={2} selected={personalInfo.birthday} onChange={(date) => handleBirthdayChange(date)} /> */}
-                            <FloatingDatePicker label="birthday" onChange={(date) => handleBirthdayChange(date)} selected={personalInfo.birthday}/>
+                        <div className='col-3 birthday'>
+                            <FloatingDatePicker label="birthday" onChange={(date) => handleBirthdayChange(date)} selected={common.convertStringToDate(personalInfo.birthday)} />
+
                         </div>
-                        
+                        <div className='col-3'>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Place Of Birth"
+                            >
+                                <Form.Control type="text" name="placeOfBirth" value={personalInfo.placeOfBirth} onChange={changePersonalInfo} placeholder="place of birth" />
+                            </FloatingLabel>
+                        </div>
+                        <div className='col-3'>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="gender"
+                            >
+                                <Form.Select aria-label="Default select example" name="gender" value={personalInfo.gender} onChange={changePersonalInfo}>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </Form.Select>
+                            </FloatingLabel>
+                        </div>
+                        <div className='col-3'>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="maritalStatus"
+                            >
+                                <Form.Select aria-label="Default select example" name="maritalStatus" value={personalInfo.maritalStatus} onChange={changePersonalInfo}>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="widowed">Widowed</option>
+                                </Form.Select>
+                            </FloatingLabel>
+                        </div>
                     </div>
                 </Accordion.Body>
             </Accordion.Item>
